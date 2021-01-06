@@ -210,7 +210,7 @@ def big_shoe_rebounds
   
   all_sizes = []
   
-  largest_shoe_size = all_sizes.max
+  largest_shoe_size = all_sizes.max()
   
   game_hash.each do |key, value|
     value[:players].each do |player|
@@ -218,4 +218,11 @@ def big_shoe_rebounds
     end 
   end
   
+  game_hash.each do |key, value|
+    value[:players].each do |player|
+      if player[:shoe] == largest_shoe_size
+        return player[:rebounds]
+      end
+    end
+  end    
 end
