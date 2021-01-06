@@ -126,4 +126,104 @@ def game_hash
   }
 end
 
-# Write code here
+
+def num_points_scored(player_name)
+  
+  game_hash.each do |key, value|
+    value[:players].each do |player|
+      if player_name == player[:player_name]
+        return player[:points]
+      end
+    end 
+  end
+  
+end
+
+
+def shoe_size(player_name)
+  
+  game_hash.each do |key, value|
+    value[:players].each do |player|
+      if player_name == player[:player_name]
+        return player[:shoe]
+      end
+    end 
+  end
+  
+end
+
+
+def team_colors(team_name)
+  
+  game_hash.each do |key, value|
+    if value[:team_name] == team_name
+      return value[:colors]
+    end
+  end
+  
+end
+
+
+def team_names
+  
+  names = []
+  
+  game_hash.each do |key, value|
+    names << value[:team_name]
+  end
+  
+  return names
+  
+end
+
+
+def player_numbers(team_name)
+  
+  jersey_numbers = []
+  
+  game_hash.each do |key, value|
+    if value[:team_name] == team_name
+      value[:players].each do |player|
+        jersey_numbers << player[:number]
+      end
+    end
+  end
+  
+  return jersey_numbers
+end
+
+
+def player_stats(player_name)
+  
+  game_hash.each do |key, value|
+    value[:players].each do |player|
+      if player_name == player[:player_name]
+        return player
+      end
+    end 
+  end
+  
+end
+
+
+def big_shoe_rebounds
+  
+  all_sizes = []
+  
+  game_hash.each do |key, value|
+    value[:players].each do |player|
+      all_sizes << shoe_size(player[:player_name])
+    end 
+  end
+  
+  largest_shoe_size = all_sizes.max
+ 
+  game_hash.each do |key, value|
+    value[:players].each do |player|
+      if player[:shoe] == largest_shoe_size
+        return player[:rebounds]
+      end
+    end
+  end    
+  
+end
